@@ -5894,13 +5894,18 @@ gigya._.UI.registerPlugin(function() {
                     void 0 === t && (t = 0);
                     var g = [];
                     i && e.reverse();
+                    var blackList = JSON.parse(localStorage.getItem("bannedUsers"));
+                    console.log("ENTRO");
                     for (var r = 0; r < e.length; r++) {
-                        var l = e[r]
-                          , m = this.commentInstances[l.ID];
-                        m ? (m.error = s,
-                        m.info = a,
-                        m.reset(l, !0)) : m = new o.Comment(this,l,t,null,n,i,s,a),
-                        g.push(m)
+                        console.log("Interceptado en customAddComment");
+                        if (!blackList.find(e[r].sender.name)) {
+                            var l = e[r]
+                            , m = this.commentInstances[l.ID];
+                            m ? (m.error = s,
+                            m.info = a,
+                            m.reset(l, !0)) : m = new Comment(this,l,t,null,n,i,s,a),
+                            g.push(m)
+                       }
                     }
                 }
                 ,
