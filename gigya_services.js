@@ -5785,6 +5785,7 @@ gigya._.UI.registerPlugin(function() {
                 }
                 ,
                 e.prototype.fetchComments = function(e, t) {
+                    console.log("Nuevo services");
                     var i = this;
                     void 0 === e && (e = !1);
                     var o = {
